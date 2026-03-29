@@ -121,7 +121,7 @@
   Made with ❤️ for Ashlene
 </footer>
 
-<audio id="music" loop>
+<audio id="music" loop playsinline>
   <!-- Replace with your favorite Malayalam/Tamil song link -->
   <source src="Tuhiyeramera.mpeg" type="audio/mpeg">
 </audio>
@@ -131,8 +131,12 @@
   const popup = document.getElementById("popup");
 
   function toggleMusic() {
-    if (music.paused) music.play(); 
-    else music.pause();
+    if (music.paused) {
+      music.play().catch(() => {
+        alert("Tap again to play");
+      });
+    } else{ music.pause();
+  }
   }
   
   function showMessage() {
