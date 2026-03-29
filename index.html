@@ -131,13 +131,7 @@
   const popup = document.getElementById("popup");
 
   function toggleMusic() {
-    if (music.paused) {
-      music.play().then(() => {
-        console.log("Playing");
-      }).catch(err => {
-        alert("Tap again to enable sound ");
-      });
-  } else {
+    if (music.paused) music.play() 
     else music.pause();
   }
   
