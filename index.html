@@ -127,22 +127,12 @@
 </audio>
 
 <script>
-  
-  let musicStarted = false;
   const music = document.getElementById("music");
   const popup = document.getElementById("popup");
 
   function toggleMusic() {
-    if (!musicStarted) {
-      music.play().then => {
-        musicStarted = true;
-      }).catch(() => {
-        alert("Tap once more");
-    }};
-    }else{
-      if(music.pauseed) music.play();
-      else music.pause();
-  }
+    if (music.paused) music.play();
+    else music.pause();
   }
   
   function showMessage() {
