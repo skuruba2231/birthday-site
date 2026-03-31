@@ -178,11 +178,22 @@ function slideShow(){
  setTimeout(slideShow,2500);
 }
 
-function typeWriter(text,el,i=0){
- if(i<text.length){
-  el.innerHTML+=text.charAt(i);
-  setTimeout(()=>typeWriter(text,el,i+1),70);
- }
+function typeWriter(text, el, i = 0) {
+  if (i < text.length) {
+    el.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
+
+    let delay = 70; // ✅ medium speed
+
+    // ⏸️ Pause longer after punctuation
+    if (text[i] === '.' || text[i] === '!' || text[i] === '?') {
+      delay = 500;
+    }
+
+    setTimeout(() => typeWriter(text, el, i + 1), delay);
+  } else {
+    // remove cursor at end (optional)
+    el.innerHTML = text;
+  }
 }
 
 function startExperience(){
