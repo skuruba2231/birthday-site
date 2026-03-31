@@ -1,154 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Ashlene 🎉</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ashlene 💖</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: white;
-      text-align: center;
-    }
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#ff758c;
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+}
 
-    header { padding: 60px 20px; }
+/* INTRO */
+#intro{
+ position:fixed;
+ width:100%;
+ height:100%;
+ background:#000;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ flex-direction:column;
+ z-index:10;
+}
 
-    h1 { font-size: 3em; }
+.intro-text{
+ font-size:28px;
+ opacity:0;
+ animation:fadeText 3s forwards;
+}
 
-    .btn {
-      padding: 12px 25px;
-      margin: 10px;
-      border: none;
-      border-radius: 25px;
-      background: #ff4081;
-      color: white;
-      cursor: pointer;
-    }
+.intro-text:nth-child(2){animation-delay:2s}
+.intro-text:nth-child(3){animation-delay:4s}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 30px;
-    }
+@keyframes fadeText{
+ 0%{opacity:0;transform:translateY(20px)}
+ 100%{opacity:1;transform:translateY(0)}
+}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      transition: 0.4s;
-    }
+.hidden{display:none}
 
-    .gallery img:hover { transform: scale(1.1); }
+/* VIDEO */
+video{
+ position:fixed;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ z-index:-1;
+ filter: brightness(0.6) blur(2px);
+}
 
-    .popup {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      visibility: hidden;
-    }
+/* MAIN */
+h1{margin-top:80px}
 
-    .popup-content {
-      background: white;
-      color: black;
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 350px;
-    }
+.btn{
+ padding:12px 25px;
+ border:none;
+ border-radius:25px;
+ background:#ff4081;
+ color:#fff;
+ cursor:pointer;
+}
 
-    .show { visibility: visible; }
+/* SLIDESHOW */
+.slideshow{
+ max-width:600px;
+ margin:20px auto;
+}
+.slideshow img{
+ width:100%;
+ border-radius:20px;
+}
 
-    footer { padding: 20px; }
-  </style>
+/* POPUP */
+.popup{
+ position:fixed;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ background:rgba(0,0,0,.9);
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ visibility:hidden;
+}
+
+.popup-content{
+ background:#fff;
+ color:#000;
+ padding:30px;
+ border-radius:20px;
+ max-width:350px;
+}
+
+.show{visibility:visible}
+
+#typeMsg{
+ font-size:18px;
+ min-height:120px;
+}
+
+/* FADE TEXT */
+.fade-line{
+ position:fixed;
+ bottom:30px;
+ width:100%;
+ text-align:center;
+ font-size:20px;
+ opacity:0;
+ animation:fadeIn 4s forwards;
+ animation-delay:5s;
+}
+
+@keyframes fadeIn{
+ to{opacity:1}
+}
+</style>
 </head>
+
 <body>
 
-<header>
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-text">For someone special 💖</div>
+  <div class="intro-text">A small surprise...</div>
+  <div class="intro-text">Just for you Ashlene 🎂</div>
+</div>
+
+<!-- VIDEO -->
+<video autoplay muted loop>
+  <source src="video/mga.mp4" type="video/mp4">
+</video>
+
+<!-- MAIN -->
+<div id="main" class="hidden">
   <h1>🎂 Happy Birthday Ashlene 🎂</h1>
-  <p>You are truly special 💖</p>
+  <button class="btn" onclick="startExperience()">💖 Open Surprise</button>
 
-  <button class="btn" onclick="toggleMusic()">🎵 Music</button>
-  <button class="btn" onclick="showMessage()">💌 Message</button>
-  <button class="btn" onclick="launchConfetti()">🎇 Celebrate</button>
-</header>
+  <div class="slideshow">
+    <img id="slide" src="photo19.jpeg">
+  </div>
+</div>
 
-<section class="gallery">
-  <!-- Replace these with your real photos -->
-  <img src="photo1.jpeg">
-  <img src="photo2.jpeg">
-  <img src="photo3.jpeg">
-  <img src="photo4.jpeg">
-  <img src="photo5.jpeg">
-  <img src="photo6.jpeg">
-  <img src="photo7.jpeg">
-  <img src="photo8.jpeg">
-  <img src="photo9.jpeg">
-  <img src="photo10.jpeg">
-  <img src="photo11.jpeg">
-  <img src="photo12.jpeg">
-  <img src="photo13.jpeg">
-  <img src="photo14.jpeg">
-  <img src="photo15.jpeg">
-  <img src="photo16.jpeg">
-  <img src="photo17.jpeg">
-  <img src="photo18.jpeg">
-  <img src="photo19.jpeg">
-  <img src="photo20.jpeg">
-</section>
-
+<!-- POPUP -->
 <div id="popup" class="popup">
   <div class="popup-content">
-    <h2>💖 Special Message</h2>
-    <p>
-      Wishing you a very happy birthday Ashlene 🎂✨<br><br>
-      On your special day, I hope you’re surrounded by love, happiness, and all the things that make you smile.
-      You deserve the world and so much more. May this new year of your life bring you endless opportunities, 
-      unforgettable memories, and dreams that come true💫❤️<br><br>
-      Thank you for being such a good person and thank you for listening and being there 💖<br><br>
-      I will always be grateful for this friendship 🌸
-    </p>
+    <h2>💌</h2>
+    <p id="typeMsg"></p>
     <button class="btn" onclick="closeMessage()">Close</button>
   </div>
 </div>
 
-<footer>
-  Made with ❤️ for Ashlene
-</footer>
+<div class="fade-line">With 💖 for Ashlene</div>
 
-<audio id="music" loop playsinline>
-  <!-- Replace with your favorite Malayalam/Tamil song link -->
-  <source src="Tuhiyarmera.mpeg" type="audio/mpeg">
+<audio id="music" loop>
+  <source src="Minnavle.mpeg" type="audio/mpeg">
 </audio>
 
 <script>
-  const music = document.getElementById("music");
-  const popup = document.getElementById("popup");
+const music=document.getElementById("music");
+const popup=document.getElementById("popup");
 
-  function toggleMusic() {
-    if (music.paused) music.play();
-    else music.pause();
-  }
-  
-  function showMessage() {
-    popup.classList.add("show");
-  }
+const msg=`Wishing you a very happy birthday Ashlene 🎂✨<br><br>
+      On your special day, I hope you’re surrounded by love, happiness, and all the things that make you smile.
+      You deserve the world and so much more. May this new year of your life bring you endless opportunities, 
+      unforgettable memories, and dreams that come true💫❤️<br><br>
+      Thank you for being such a good person and thank you for listening and being there 💖
+      I will always be grateful for this friendship 🌸<br><br>;
 
-  function closeMessage() {
-    popup.classList.remove("show");
-  }
+const images=[
+"photo1.jpeg","photo2.jpeg","photo3.jpeg","photo4.jpeg","photo5.jpeg","photo6.jpeg","photo7.jpeg","photo8.jpeg","photo9.jpeg","photo10.jpeg","photo11.jpeg","photo12.jpeg","photo13.jpeg","photo14.jpeg","photo15.jpeg",
+"photo16.jpeg","photo17.jpeg","photo18.jpeg","photo19.jpeg","photo20.jpeg"
+];
 
-  function launchConfetti() {
-    confetti({ particleCount: 200, spread: 120 });
-  }
+let i=0;
+function slideShow(){
+ document.getElementById("slide").src=images[i];
+ i=(i+1)%images.length;
+ setTimeout(slideShow,2500);
+}
+
+function typeWriter(text,el,i=0){
+ if(i<text.length){
+  el.innerHTML+=text.charAt(i);
+  setTimeout(()=>typeWriter(text,el,i+1),40);
+ }
+}
+
+function startExperience(){
+ music.play().catch(()=>{});
+ launchConfetti();
+ slideShow();
+ popup.classList.add("show");
+ document.getElementById("typeMsg").innerHTML="";
+ typeWriter(msg,document.getElementById("typeMsg"));
+}
+
+function closeMessage(){
+ popup.classList.remove("show");
+}
+
+function launchConfetti(){
+ confetti({particleCount:200,spread:120});
+}
+
+/* AUTO INTRO */
+setTimeout(()=>{
+ document.getElementById("intro").style.display="none";
+ document.getElementById("main").classList.remove("hidden");
+},6000);
 </script>
 
 </body>
